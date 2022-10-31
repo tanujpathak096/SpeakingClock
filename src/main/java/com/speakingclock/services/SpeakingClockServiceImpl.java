@@ -21,7 +21,7 @@ public class SpeakingClockServiceImpl implements SpeakingClockService {
     public String getCurrentTime(TimeDto timeDto) throws SpeakingClockServiceException {
 
         String timeInWords = null;
-        if(timeDto.getCountryCode() == null)
+        if(timeDto.getCountryCode() == null || timeDto.getCountryCode().isEmpty())
             timeDto.setCountryCode("Asia/Kolkata");
         ZoneId zoneId=null;
         try {
@@ -51,7 +51,7 @@ public class SpeakingClockServiceImpl implements SpeakingClockService {
     public String getDayType(TimeDto timeDto) throws SpeakingClockServiceException {
 
         String dayInWords = null;
-        if(timeDto.getCountryCode() == null)
+        if( timeDto.getCountryCode() == null || timeDto.getCountryCode().isEmpty())
             timeDto.setCountryCode("Asia/Kolkata");
         ZoneId  zoneId;
         try {

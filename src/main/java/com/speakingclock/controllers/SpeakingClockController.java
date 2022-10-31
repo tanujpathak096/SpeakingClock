@@ -3,6 +3,7 @@ package com.speakingclock.controllers;
 import com.speakingclock.requests.TimeDto;
 import com.speakingclock.services.exceptions.SpeakingClockServiceException;
 import com.speakingclock.services.interfaces.SpeakingClockService;
+import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +25,7 @@ public class SpeakingClockController {
     By default we will consider IST
      */
     @GetMapping("/time")
-    public ResponseEntity<Object> getCurrentTime(@RequestBody TimeDto timeDto) throws SpeakingClockServiceException {
+    public ResponseEntity<Object> getCurrentTime(@NonNull @RequestBody TimeDto timeDto) throws SpeakingClockServiceException {
 
         try{
           String timeInWords = speakingClockService.getCurrentTime(timeDto);
@@ -39,7 +40,7 @@ public class SpeakingClockController {
       resource to get the dayType
      */
     @GetMapping("/dayType")
-    public ResponseEntity<String> getDayType(@RequestBody TimeDto timeDto) throws SpeakingClockServiceException {
+    public ResponseEntity<String> getDayType(@NonNull @RequestBody TimeDto timeDto) throws SpeakingClockServiceException {
         String dayInWords =  speakingClockService.getDayType(timeDto);
         return ResponseEntity.ok(dayInWords);
     }
